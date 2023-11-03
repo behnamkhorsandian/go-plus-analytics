@@ -1,0 +1,20 @@
+{
+  "name": "Database",
+  "children": [
+    {"name": "Student","children": [{"name": "Name", "value": "Student_A"},
+                                    {"name": "Gender", "value": "Male"}, 
+                                    {"name": "Country", "value": "🇦🇪"},
+                                    {"name": "School", "value": "School_B"},
+                                    {"name": "Year", "value": "2"}]},
+      
+    {"name": "Courses", "children": [ {"name": "Topic A", "children":[{"name": "Sub-Topic A-1","children":[{"name": "Objective 1"},{"name": "Objective 2"},{"name": "Objective 3"},{"name": "Objective 4"},{"name": "Objective 5"},{"name": "Objective 6"}]},{"name": "Sub-Topic A-2"},{"name": "Sub-Topic A-3"},{"name": "Sub-Topic A-4"},{"name": "Sub-Topic A-5"},{"name": "Sub-Topic A-6"}]},
+                                      {"name": "Topic B"},
+                                      {"name": "Topic C"},
+                                      {"name": "Topic D"}]},
+
+    {"name": "Exams", "children": [{"name": "Grades"},
+                                   {"name": "Times"},
+                                   {"name": "Courses", "children":[{"name": "Sub-Topic A-1","children":[{"name": "Objective 1"},{"name": "Objective 2"},{"name": "Objective 3"},{"name": "Objective 4"},{"name": "Objective 5"},{"name": "Objective 6"}]},{"name": "Sub-Topic A-2"},{"name": "Sub-Topic A-3"},{"name": "Sub-Topic A-4"},{"name": "Sub-Topic A-5"},{"name": "Sub-Topic A-6"}]},
+                                   {"name": "Method"}]}
+  ]
+}

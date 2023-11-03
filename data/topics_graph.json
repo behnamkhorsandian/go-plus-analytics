@@ -1,21 +1,21 @@
 {
     "nodes": [
-        {"id": "0", "name": "Exploring Artificial Intelligence", "symbolSize": 30, "category": 0},
-        {"id": "1", "name": "Tech-Society Interface", "symbolSize": 12, "category": 0},
-        {"id": "2", "name": "Green Tech", "symbolSize": 12, "category": 0},
+        {"id": "0", "name": "Topics / Objectives", "symbolSize": 30, "category": 0},
+        {"id": "1", "name": "Topics / Objectives", "symbolSize": 12, "category": 0},
+        {"id": "2", "name": "Topics / Objectives", "symbolSize": 12, "category": 0},
         
-        {"id": "3", "name": "The Warming Globe", "symbolSize": 12, "category": 1},
+        {"id": "3", "name": "Topics / Objectives", "symbolSize": 12, "category": 1},
         
-        {"id": "4", "name": "Community in a Decentralized World", "symbolSize": 12, "category": 2},
-        {"id": "6", "name": "From Analog to Digital", "symbolSize": 12, "category": 2},
+        {"id": "4", "name": "Topics / Objectives", "symbolSize": 12, "category": 2},
+        {"id": "6", "name": "Topics / Objectives", "symbolSize": 12, "category": 2},
 
-        {"id": "5", "name": "AI and Wealth", "symbolSize": 12, "category": 3},
-        {"id": "7", "name": "Historic Economies: From Barter to Bitcoin", "symbolSize": 18, "category": 3},
-        {"id": "8", "name": "TechTimeline", "symbolSize": 18, "category": 6},
+        {"id": "5", "name": "Topics / Objectives", "symbolSize": 12, "category": 3},
+        {"id": "7", "name": "Topics / Objectives", "symbolSize": 18, "category": 3},
+        {"id": "8", "name": "Topics / Objectives", "symbolSize": 18, "category": 6},
 
-        {"id": "9", "name": "Crypto-Economy: A New Frontier", "symbolSize": 24, "category": 4},
-        {"id": "10", "name": "AI and Wealth", "symbolSize": 12, "category": 4},
-        {"id": "11", "name": "Historic Economies: From Barter to Bitcoin", "symbolSize": 18, "category": 4}
+        {"id": "9", "name": "Topics / Objectives", "symbolSize": 24, "category": 4},
+        {"id": "10", "name": "Topics / Objectives", "symbolSize": 12, "category": 4},
+        {"id": "11", "name": "Topics / Objectives", "symbolSize": 18, "category": 4}
     ],
     "links": [
         {"source": "0", "target": "9"},
@@ -37,10 +37,10 @@
         {"source": "10", "target": "11"}
     ],
     "categories": [
-        {"id":"0", "name": "Technology"},
-        {"id":"1", "name": "Environment"},
-        {"id":"2", "name": "Society"},
-        {"id":"3", "name": "History"},
-        {"id":"4", "name": "Economy"}
+        {"id":"0", "name": "Tag A"},
+        {"id":"1", "name": "Tag B"},
+        {"id":"2", "name": "Tag C"},
+        {"id":"3", "name": "Tag D"},
+        {"id":"4", "name": "Tag E"}
     ]
   }
