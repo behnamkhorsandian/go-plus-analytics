@@ -5,9 +5,9 @@ from streamlit_extras.app_logo import add_logo
 
 
 # --- PAGE CONFIG (BROWSER TAB) ---
-st.set_page_config(page_title="GoPlus", page_icon=":robot_face:",
+st.set_page_config(page_title="Playground", page_icon=":robot_face:",
                    layout="centered", initial_sidebar_state="expanded")
-add_logo("images/gopluslogo.png", height=128)
+# add_logo("images/gopluslogo.png", height=128)
 
 
 # ---- LOAD ASSETS ----
@@ -21,10 +21,10 @@ local_css("style/style.css")
 
 # --- MAIN PAGE ---
 with st.container():
-        st.title("GoPlus Analytics")
+        st.title("LMSxAI Analytics")
 
         st.write('''
-            Welcome to GoPlus, your gateway to next-level learning through the power of AI. \n
+            Welcome to our Playground, your gateway to next-level learning through the power of AI. \n
             In the following presentation, we have decided to use the **4D Framework** which is the prefect workflow for data-driven solutions.
              ''')
 
@@ -49,7 +49,7 @@ with st.container():
         layout.image("images/4d_client.png")
         layout.write('''
                 #
-                ### Client:  Al Maarifah Colleges (Medical)
+                ### Client:  Schools, Universities,...
                 #
                 ''')
         

@@ -5,6 +5,12 @@ from streamlit_extras.app_logo import add_logo
 from streamlit_echarts import st_echarts
 
 import pandas as pd
+import numpy as np
+import plotly.figure_factory as ff
+import plotly.express as px
+import plotly.graph_objects as go
+
+import pandas as pd
 import random
 import numpy as np
 
@@ -13,9 +19,9 @@ import json
 
 
 # --- PAGE CONFIG (BROWSER TAB) ---
-st.set_page_config(page_title="GoPlus", page_icon=":robot_face:",
+st.set_page_config(page_title="Playground", page_icon=":robot_face:",
                    layout="centered", initial_sidebar_state="expanded")
-add_logo("images/gopluslogo.png", height=128)
+# add_logo("images/gopluslogo.png", height=128)
 
 
 # ---- LOAD CSS ----
@@ -30,6 +36,29 @@ if 'fresh' not in st.session_state:
     st.session_state.database =  pd.DataFrame()
     st.session_state.cleaned =  pd.DataFrame()
     st.session_state.raw =  {}
+    
+# ---- MEMORY SETTINGS ----
+if 'history' not in st.session_state:
+    st.session_state.history = []
+    st.session_state.history = []
+    students_count = 30
+    student_names = [f'Student_{i+1}' for i in range(students_count)]
+    Patient_Assessment = np.random.randint(0, 100, students_count)
+    Medication_Administration = np.random.randint(0, 100, students_count)
+    Wound_Care = np.random.randint(0, 100, students_count)
+    Infection_Control = np.random.randint(0, 100, students_count)
+    Emergency_Response = np.random.randint(0, 100, students_count)
+    overall = np.mean([Patient_Assessment, Medication_Administration, Wound_Care, Infection_Control, Emergency_Response], axis=0)
+    
+    st.session_state["grades_df"] = pd.DataFrame({
+                                    'Student Name': student_names,
+                                    'Technology': Patient_Assessment,
+                                    'Environment': Medication_Administration,
+                                    'Society': Wound_Care,
+                                    'History': Infection_Control,
+                                    'Economy': Emergency_Response,
+                                    'GRADE': overall
+                                })
     
 
 
@@ -49,7 +78,7 @@ with st.container():
     st.write("## Data Collection")
     st.image("images/data_collection.png")
     st.write('''
-                First up is Data Collection. In GoPlus, you can upload a variety of formats—PDFs, Excel files, videos, you name it. 
+                First up is Data Collection. In this platform, you can upload a variety of formats—PDFs, Excel files, videos, you name it. 
                 They can be Question banks, Grades, or resources.\n
                 There are two ways to use our solution for your system:\n\n
                 #
@@ -119,7 +148,7 @@ with st.container():
     st.image("images/data_cleaning.png")
     st.write('''
                 Now, let's talk Data Cleaning. 
-                \n Most of the platforms skip this step go straight to the beautiful charts and graphs. To be honest, we understand in is that the case, because it's a time consuming process.
+                \n Most of the platforms skip this step go straight to the beautiful charts and graphs. To be honest, we understand why is that the case, because it's a time consuming process.
                 \n This is where our AI steps in to make your life easier. It sorts and tags all kinds of documents with your own tagging structure.
                 There are three objectives in data cleaning:\n
                 ''')
@@ -214,7 +243,7 @@ with st.container():
     st.write('''
             #
             ### Tagging Data:
-            In this step we are going to 
+            In this step we are going to trace all the resources so we can have bredcrubs of learning objectives
             ''')
     
     # DATA TAGGING
@@ -321,30 +350,72 @@ with st.container():
     st.write("## Data Interpretation")
     st.image("images/data_interpretation.png")
     st.write('''
-                Now, let's talk Data Cleaning. 
-                \n Most of the platforms skip this step go straight to the beautiful charts and graphs. To be honest, we understand in is that the case, because it's a time consuming process.
-                \n This is where our AI steps in to make your life easier. It sorts and tags all kinds of documents with your own tagging structure.
-                There are three objectives in data cleaning:\n
+                Next, we delve into Data Interpretation. Our AI goes to work, analyzing your responses in real-time. We're talking about capturing everything from mouse movements to how long you spend on each question. This allows us to provide valuable insights, like how focused you were during the quiz or how confident you are in your answers. It's an incredibly detailed snapshot of your learning process, delivered almost instantly.
                 ''')
     
-    st.write("#")
-    st.image("images/data_cleaning_process.png")
-    st.write("#")
+    
     
 
     st.divider()
     st.write("## Data Visualization")
     st.image("images/data_visualization.png")
     st.write('''
-                Now, let's talk Data Cleaning. 
-                \n Most of the platforms skip this step go straight to the beautiful charts and graphs. To be honest, we understand in is that the case, because it's a time consuming process.
-                \n This is where our AI steps in to make your life easier. It sorts and tags all kinds of documents with your own tagging structure.
-                There are three objectives in data cleaning:\n
+                Finally, let's talk Data Visualization. We're using heat maps to point out your strengths and weaknesses, spider graphs to show the effectiveness of different learning resources, and histograms to highlight challenging topics. This isn't just data; it's a visually rich, easy-to-understand report card on your learning journey.
                 ''')
+
+    with st.container():
+        
+        st.divider()
+        
+        st.title("Course Performance:")
+        course_layout = grid([1,1] , vertical_align="center")
+        overall_grades = {
+            'Technology': st.session_state["grades_df"]['Technology'].mean(),
+            'Environment': st.session_state["grades_df"]['Environment'].mean(),
+            'Society': st.session_state["grades_df"]['Society'].mean(),
+            'History': st.session_state["grades_df"]['History'].mean(),
+            'Economy': st.session_state["grades_df"]['Economy'].mean()
+        }
+        fake_values = [70, 30, 75, 55, 90]
+        categories = list(overall_grades.keys())
+        values = list(overall_grades.values())
+        
+        # SPIDER GRAPH
+        overall_performance = go.Figure()
+        overall_performance.add_trace(go.Scatterpolar( r=fake_values, theta=categories, fill='toself', line=dict(color='teal'), name="Image"))
+        overall_performance.add_trace(go.Scatterpolar( r=values, theta=categories, fill='toself', line=dict(color='purple'), name="Text"))
+        overall_performance.update_layout( polar=dict(radialaxis=dict(visible=True, range=[0, 100])), showlegend=True)
+        
+        # HISTOGRAM
+        cource_histogram = px.histogram(st.session_state["grades_df"], x=st.session_state["grades_df"].columns[1:-1], marginal='box', color_discrete_sequence=px.colors.sequential.Viridis)
+        cource_histogram.update_layout(bargap=0.1)
+
+        # Display the histogram in Streamlit
+        st.plotly_chart(cource_histogram)
+        st.plotly_chart(overall_performance)
     
-    st.write("#")
-    st.image("images/data_cleaning_process.png")
-    st.write("#")
+    with st.container():
+        st.title("Students Performance:")
+        categories = ['Patient Assessment', 'Medication Administration', 'Wound Care', 'Infection Control', 'Emergency Response']
+        transposed_df = st.session_state["grades_df"].drop(columns=['GRADE']).set_index('Student Name').transpose()
+        single_performance = ff.create_annotated_heatmap(
+            z=transposed_df.values,
+            x=transposed_df.columns.tolist(),
+            y=transposed_df.index.tolist(),
+            annotation_text=transposed_df.values,
+            colorscale='Viridis',
+            showscale=True,
+            colorbar=dict(title='Grades')
+        )
+        
+        single_performance.update_layout(
+            xaxis=dict(title='Student Name'),
+            yaxis=dict(title='Category')
+        )
+        st.plotly_chart(single_performance, use_container_width=True)
+        pass
+
+
     
     
     

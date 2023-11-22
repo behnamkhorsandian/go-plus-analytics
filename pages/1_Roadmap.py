@@ -11,9 +11,9 @@ from datetime import datetime, timedelta
 
 
 # --- PAGE CONFIG (BROWSER TAB) ---
-st.set_page_config(page_title="GoPlus", page_icon=":robot_face:",
+st.set_page_config(page_title="Playground", page_icon=":robot_face:",
                    layout="centered", initial_sidebar_state="expanded")
-add_logo("images/gopluslogo.png", height=128)
+# add_logo("images/gopluslogo.png", height=128)
 
 
 # ---- LOAD CSS ----

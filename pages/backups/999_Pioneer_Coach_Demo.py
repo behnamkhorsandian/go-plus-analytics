@@ -30,7 +30,7 @@ with st.container():
     st.title("👽 Pioneer Coach")
     
     st.write('''
-             Before we wrap up, let me introduce you to Pioneer Coach, your AI-powered teaching assistant. Whether you need to focus on a specific topic or you're looking for personalized study materials, Pioneer Coach has you covered. And the more you interact with it, the better it gets at helping you learn.
+             Page contents in markdown format
              ''')
     pass
 
@@ -43,10 +43,6 @@ with chat("Debug"):
     if prompt := st.chat_input():
         add_message("user", prompt, avatar="💭")
         st.session_state.history.append({"role": "user", "content": prompt})
-
-        
-        
-        
         
         
         respond = "this is the aswer"
