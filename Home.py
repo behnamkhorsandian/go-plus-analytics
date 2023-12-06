@@ -16,7 +16,7 @@ import time
 from datetime import datetime, timedelta
 import random
 import hashlib
-import openai
+# import openai
 import json
 
 import pandas as pd
