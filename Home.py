@@ -26,7 +26,7 @@ import plotly.graph_objects as go
 
 
 # --- PAGE CONFIG (BROWSER TAB) ---
-st.set_page_config(page_title="GoPlus", page_icon=":easter_island_statue:", layout="centered", initial_sidebar_state="expanded")
+st.set_page_config(page_title="GoPlus", page_icon=":easter_island_statue:", layout="centered", initial_sidebar_state="collapsed")
 
 
 # ---- LOAD ASSETS ----
