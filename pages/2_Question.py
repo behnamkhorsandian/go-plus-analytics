@@ -67,7 +67,7 @@ with st.form("Question Generation"):
     _question = st.text_area('Write your question template', height=10, placeholder="A car traveling at 10 meters per second (m/s) begins to accelerate uniformly. After 5 seconds, its speed increases to 20 m/s. What is the car's acceleration during this time?")
     if st.form_submit_button("Create Similar Question", use_container_width=True):
         st.session_state['question'] = _question
-        
+        st.spinner("Creating similar question...")
         question = openai.chat.completions.create(
             model="gpt-4-1106-preview",
             messages=[
@@ -84,6 +84,7 @@ if len(st.session_state['new_question']) > 0:
     st.markdown(st.session_state['new_question'])
 
     if st.button("Step-by-Step Solution"):
+        st.spinner("Creating step by step solution...")
         answer = openai.chat.completions.create(
             model="gpt-4-1106-preview",
             messages=[
@@ -96,7 +97,7 @@ if len(st.session_state['new_question']) > 0:
         st.experimental_rerun()
         
 if len(st.session_state['answer']) > 0:
-    st.write(st.session_state['answer'])
+    st.latex(st.session_state['answer'])
         
     
     
