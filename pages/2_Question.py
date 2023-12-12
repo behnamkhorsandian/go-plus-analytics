@@ -96,7 +96,7 @@ if len(st.session_state['new_question']) > 0:
         st.experimental_rerun()
         
 if len(st.session_state['answer']) > 0:
-    st.markdown(st.session_state['answer'])
+    st.write(st.session_state['answer'])
         
     
     
