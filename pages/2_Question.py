@@ -81,9 +81,10 @@ with st.form("Question Generation"):
         st.experimental_rerun()
         
 if len(st.session_state['new_question']) > 0:
+    st.markdown("### NEW Question:")
     st.markdown(st.session_state['new_question'])
 
-    if st.button("Step-by-Step Solution"):
+    if st.button("Step-by-Step Solution", use_container_width=True):
         st.spinner("Creating step by step solution...")
         answer = openai.chat.completions.create(
             model="gpt-4-1106-preview",
