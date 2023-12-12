@@ -97,7 +97,7 @@ if len(st.session_state['new_question']) > 0:
         st.experimental_rerun()
         
 if len(st.session_state['answer']) > 0:
-    st.latex(st.session_state['answer'])
+    st.session_state['answer']
         
     
     
