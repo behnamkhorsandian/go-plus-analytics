@@ -78,6 +78,7 @@ with st.form("Question Generation"):
             max_tokens = 500
             )
         st.session_state['new_question'] = question.choices[0].message.content
+        Prompts.Tests.insert_one({"_input":st.session_state['new_question']})
         st.experimental_rerun()
         
 if len(st.session_state['new_question']) > 0:
