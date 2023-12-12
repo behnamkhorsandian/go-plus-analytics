@@ -48,6 +48,10 @@ mongodb_url =  st.secrets["db_url"]
 client = MongoClient(mongodb_url, server_api=ServerApi('1'), tls=True, tlsAllowInvalidCertificates=True)
 Prompts = client.Prompts
 
+# ---- OPENAI ----   
+openai.api_key = st.secrets["openai_apikey"]
+
+
 # ---- CACHE SETTING ----
 if 'cache_created' not in st.session_state:
     st.session_state['cache_created'] = True
